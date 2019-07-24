@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using BooksApi.Models;
+using BooksApi.Services;
 
 namespace BooksApi
 {
@@ -31,6 +32,9 @@ namespace BooksApi
 
             services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
             sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+
+            services.AddSingleton<BookService>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
